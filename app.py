@@ -45,16 +45,12 @@ class Polls(Resource):
         output = []
 
         for poll in all_polls:
-            poll_data = {}
-            poll_data["id"] = poll.id
-            poll_data["name"] = poll.name
-            poll_data["explanation"] = poll.explanation
+            poll_data = {"id": poll.id,
+                         "name": poll.name,
+                         "explanation": poll.explanation}
             output.append(poll_data)
 
         return jsonify({"polls": output})
-
-
-
 
 
 api.add_resource(Polls, '/poll')
