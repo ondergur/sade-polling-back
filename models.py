@@ -14,10 +14,10 @@ class Question(db.Model):
     poll_id = db.Column(db.Integer, db.ForeignKey('poll.id'), nullable=False)
     text = db.Column(db.String(100), nullable=False)
     type = db.Column(db.Integer, nullable=False)
-    answer = db.relationship('Answer', backref='question', lazy=True)
+    test_choices = db.relationship('TestChoice', backref='question', lazy=True)
 
 
-class Answer(db.Model):
+class TestChoice(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
     text = db.Column(db.String(100))
